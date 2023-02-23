@@ -9,6 +9,8 @@ function CountryDetails({ dataList }) {
 
     useEffect(() => {
 
+        //*** WORKS BUT NOT ASYNC ***//
+
         //   axios.get(`https://ih-countries-api.herokuapp.com/countries/${alpha3Code}`)
         //     .then(res => {
         //         console.log('useEffect: ', res.data.name.official)
@@ -20,7 +22,6 @@ function CountryDetails({ dataList }) {
         const fetchData = async () => { 
             try { 
                 const res = await axios.get(`https://ih-countries-api.herokuapp.com/countries/${alpha3Code}`)
-                console.log('useEffect: ', res.data.name.official)
                 setCountry([res.data])  
             } catch (error) { 
                 console.log(error) 
@@ -30,7 +31,6 @@ function CountryDetails({ dataList }) {
         fetchData()  
 
         // let newCountry = dataList.filter(item => item.alpha3Code === alpha3Code)
-
         // setCountry(newCountry)
 
     }, [alpha3Code])
